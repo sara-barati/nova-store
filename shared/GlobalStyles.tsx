@@ -38,6 +38,7 @@ const GlobalStyles = createGlobalStyle`
 
   img {
     max-width: 100%;
-  `;
+  }
+`;
 
 export default GlobalStyles;

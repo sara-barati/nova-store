@@ -1,76 +1,42 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 
-import { getProductById } from "@/requests/productRequests";
+import { getProducts } from "@/requests/productRequests";
+import ProductCatalog from "@/components/ProductCatalog";
+
 import type { Product } from "@/types/product";
 
-interface ProductDetailsPageProps {
-  params: Promise<{
-    locale: string;
-    id: string;
-  }>;
-}
+export default async function HomePage() {
+  const t = await getTranslations("HomePage");
 
-export async function generateMetadata({
-  params,
-}: ProductDetailsPageProps): Promise<Metadata> {
-  const { id } = await params;
+  let products: Product[] = [];
+  let errorMessage = "";
 
   try {
-    const product = await getProductById(Number(id));
-
-    return {
-      title: `${product.title} | NOVA Store`,
-      description: product.description,
-    };
-  } catch {
-    return {
-      title: "Product | NOVA Store",
-    };
-  }
-}
-
-export default async function ProductDetailsPage({
-  params,
-}: ProductDetailsPageProps) {
-  const { id } = await params;
-
-  const productId = Number(id);
-
-  if (!Number.isInteger(productId) || productId <= 0) {
-    notFound();
-  }
-
-  let product: Product;
-
-  try {
-    product = await getProductById(productId);
-  } catch {
-    notFound();
+    products = await getProducts();
+  } catch (error) {
+    errorMessage =
+      error instanceof Error ? error.message : "Unable to load products";
   }
 
   return (
-    <main className="product-details-page">
-      <div className="product-details-image">
-        <img src={product.image} alt={product.title} />
-      </div>
+    <main className="home-page">
+      <section className="hero-section">
+        <h1>{t("title")}</h1>
 
-      <div className="product-details-info">
-        <span className="product-category">{product.category}</span>
+        <p>{t("description")}</p>
+      </section>
 
-        <h1>{product.title}</h1>
+      <section className="products-section">
+        <h2>{t("products")}</h2>
 
-        <p>{product.description}</p>
-
-        <h2>${product.price}</h2>
-
-        <div className="product-rating">
-          <span>★ {product.rating.rate}</span>
-          <span>({product.rating.count} reviews)</span>
-        </div>
-
-        <button type="button">Add to Cart</button>
-      </div>
+        {errorMessage ? (
+          <p className="error-message">{errorMessage}</p>
+        ) : products.length === 0 ? (
+          <p>No products found.</p>
+        ) : (
+          <ProductCatalog products={products} />
+        )}
+      </section>
     </main>
   );
 }

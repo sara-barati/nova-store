@@ -1,5 +1,8 @@
-import { Link } from "@/i18n/navigation";
+"use client";
 
+import { useTranslations } from "next-intl";
+
+import { Link } from "@/i18n/navigation";
 import type { Product } from "@/types/product";
 
 interface ProductCardProps {
@@ -7,6 +10,8 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
+  const t = useTranslations("Product");
+
   return (
     <article className="product-card">
       <Link href={`/products/${product.id}`}>
@@ -23,7 +28,10 @@ export default function ProductCard({ product }: ProductCardProps) {
 
           <div className="product-rating">
             <span>★ {product.rating.rate}</span>
-            <span>({product.rating.count} reviews)</span>
+
+            <span>
+              ({product.rating.count} {t("reviews")})
+            </span>
           </div>
         </div>
       </Link>

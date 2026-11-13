@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 
 import { getProducts } from "@/requests/productRequests";
-import ProductCard from "@/components/ProductCard";
+import ProductCatalog from "@/components/ProductCatalog";
 
 import type { Product } from "@/types/product";
 
@@ -22,6 +22,7 @@ export default async function HomePage() {
     <main className="home-page">
       <section className="hero-section">
         <h1>{t("title")}</h1>
+
         <p>{t("description")}</p>
       </section>
 
@@ -33,11 +34,7 @@ export default async function HomePage() {
         ) : products.length === 0 ? (
           <p>No products found.</p>
         ) : (
-          <div className="products-grid">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+          <ProductCatalog products={products} />
         )}
       </section>
     </main>

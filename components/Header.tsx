@@ -1,10 +1,13 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import styled from "styled-components";
 
 import { useTheme } from "@/context/ThemeContext";
+
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
+
+import { useCartStore } from "@/storage/cartStore";
 
 const HeaderContainer = styled.header`
   width: 100%;
@@ -42,13 +45,29 @@ const ActionButton = styled.button`
   cursor: pointer;
 `;
 
+const CartCount = styled.span`
+  margin-left: 5px;
+  padding: 2px 7px;
+  border-radius: 50%;
+  background-color: ${({ theme }) => theme.colors.primary};
+  color: white;
+  font-size: 12px;
+`;
+
 export default function Header() {
   const locale = useLocale();
+  const t = useTranslations("Header");
 
   const pathname = usePathname();
   const router = useRouter();
 
   const { themeMode, toggleTheme } = useTheme();
+
+  const cartCount = useCartStore((state) =>
+    state.items.reduce((total, item) => total + item.quantity, 0),
+  );
+
+  const hasHydrated = useCartStore((state) => state.hasHydrated);
 
   const changeLanguage = () => {
     const nextLocale = locale === "fa" ? "en" : "fa";
@@ -63,15 +82,17 @@ export default function Header() {
       <Logo>NOVA Store</Logo>
 
       <Actions>
-        <ActionButton onClick={changeLanguage}>
-          {locale === "fa" ? "English" : "فارسی"}
-        </ActionButton>
+        <ActionButton onClick={changeLanguage}>{t("language")}</ActionButton>
 
         <ActionButton onClick={toggleTheme}>
-          {themeMode === "light" ? "Dark Mode" : "Light Mode"}
+          {themeMode === "light" ? t("darkMode") : t("lightMode")}
         </ActionButton>
 
-        <Link href="/cart">{locale === "fa" ? "سبد خرید" : "Cart"}</Link>
+        <Link href="/cart">
+          {t("cart")}
+
+          {hasHydrated && cartCount > 0 && <CartCount>{cartCount}</CartCount>}
+        </Link>
       </Actions>
     </HeaderContainer>
   );

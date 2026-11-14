@@ -10,14 +10,9 @@ interface ProductCatalogProps {
   products: Product[];
 }
 
-type SortOption =
-  | "default"
-  | "price-asc"
-  | "price-desc"
-  | "name-asc"
-  | "name-desc";
+type SortOption = "default" | "price-asc" | "price-desc" | "popular" | "rating";
 
-const PRODUCTS_PER_PAGE = 8;
+const PRODUCTS_PER_PAGE = 6;
 
 export default function ProductCatalog({ products }: ProductCatalogProps) {
   const t = useTranslations("Catalog");
@@ -57,12 +52,12 @@ export default function ProductCatalog({ products }: ProductCatalogProps) {
         result.sort((a, b) => b.price - a.price);
         break;
 
-      case "name-asc":
-        result.sort((a, b) => a.title.localeCompare(b.title));
+      case "popular":
+        result.sort((a, b) => b.rating.count - a.rating.count);
         break;
 
-      case "name-desc":
-        result.sort((a, b) => b.title.localeCompare(a.title));
+      case "rating":
+        result.sort((a, b) => b.rating.rate - a.rating.rate);
         break;
     }
 
@@ -133,9 +128,9 @@ export default function ProductCatalog({ products }: ProductCatalogProps) {
 
           <option value="price-desc">{t("priceHighToLow")}</option>
 
-          <option value="name-asc">{t("nameAscending")}</option>
+          <option value="popular">{t("mostPopular")}</option>
 
-          <option value="name-desc">{t("nameDescending")}</option>
+          <option value="rating">{t("highestRated")}</option>
         </select>
       </div>
 

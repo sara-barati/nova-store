@@ -1,8 +1,10 @@
 {
   "HomePage": {
     "title": "به فروشگاه NOVA خوش آمدید",
-    "description": "تجربه خریدی متفاوت با NOVA",
-    "products": "محصولات"
+    "description": "محصولات مورد نیازتان را با بهترین کیفیت و قیمت پیدا کنید.",
+    "products": "محصولات",
+    "shopNow": "مشاهده محصولات",
+    "loadError": "دریافت محصولات با مشکل مواجه شد."
   },
   "Header": {
     "cart": "سبد خرید",
@@ -31,8 +33,8 @@
     "defaultSort": "پیش‌فرض",
     "priceLowToHigh": "قیمت: از کم به زیاد",
     "priceHighToLow": "قیمت: از زیاد به کم",
-    "nameAscending": "نام: الف تا ی",
-    "nameDescending": "نام: ی تا الف",
+    "mostPopular": "محبوب‌ترین",
+    "highestRated": "بالاترین امتیاز",
     "noProducts": "محصولی پیدا نشد.",
     "previous": "قبلی",
     "next": "بعدی",

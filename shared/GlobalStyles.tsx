@@ -24,6 +24,9 @@ const GlobalStyles = createGlobalStyle`
   html {
     min-height: 100%;
     scroll-behavior: smooth;
+    font-family: "Vazirmatn", Inter, Tahoma, sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
   }
 
   body {
@@ -31,10 +34,14 @@ const GlobalStyles = createGlobalStyle`
     min-height: 100vh;
     background-color: var(--app-background);
     color: var(--app-text);
-    font-family: Arial, sans-serif;
+    font-family: "Vazirmatn", Inter, Tahoma, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.7;
     transition:
       background-color 0.2s ease,
       color 0.2s ease;
+    -webkit-font-smoothing: antialiased;
   }
 
   button,
@@ -42,6 +49,7 @@ const GlobalStyles = createGlobalStyle`
   select,
   textarea {
     font: inherit;
+    letter-spacing: inherit;
   }
 
   button {
@@ -59,6 +67,20 @@ const GlobalStyles = createGlobalStyle`
 
   img {
     max-width: 100%;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Vazirmatn", Inter, Tahoma, sans-serif;
+  }
+
+  ::selection {
+    background: var(--app-primary);
+    color: #ffffff;
   }
 `;
 

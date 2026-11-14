@@ -3,6 +3,8 @@ import { getTranslations } from "next-intl/server";
 import { getProducts } from "@/requests/productRequests";
 import ProductCatalog from "@/components/ProductCatalog";
 
+import { Link } from "@/i18n/navigation";
+
 import type { Product } from "@/types/product";
 
 export default async function HomePage() {
@@ -21,18 +23,33 @@ export default async function HomePage() {
   return (
     <main className="home-page">
       <section className="hero-section">
-        <h1>{t("title")}</h1>
+        <div className="hero-content">
+          <span className="hero-label">NOVA ONLINE STORE</span>
 
-        <p>{t("description")}</p>
+          <h1>{t("title")}</h1>
+
+          <p>{t("description")}</p>
+
+          <Link href="#products" className="hero-button">
+            {t("shopNow")}
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
       </section>
 
-      <section className="products-section">
-        <h2>{t("products")}</h2>
+      <section className="products-section" id="products">
+        <div className="section-heading">
+          <div>
+            <span className="section-label">NOVA COLLECTION</span>
+
+            <h2>{t("products")}</h2>
+          </div>
+        </div>
 
         {errorMessage ? (
           <p className="error-message">{errorMessage}</p>
         ) : products.length === 0 ? (
-          <p>No products found.</p>
+          <p className="catalog-empty">No products found.</p>
         ) : (
           <ProductCatalog products={products} />
         )}

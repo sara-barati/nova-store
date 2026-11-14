@@ -1,36 +1,129 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NOVA Store
+
+NOVA Store is a responsive e-commerce web application built with Next.js and TypeScript. It provides a simple shopping experience with product browsing, filtering, sorting, product details, and shopping cart management.
+
+## Features
+
+- Product listing with data fetched from Fake Store API
+- Product search by title
+- Filter products by category
+- Sort products by price, popularity, and rating
+- Pagination
+- Individual product details pages
+- Shopping cart with add, remove, and quantity management
+- Persistent shopping cart using Zustand and Local Storage
+- Persian and English language support
+- RTL and LTR layout support
+- Light and dark theme
+- Responsive design for different screen sizes
+
+## Tech Stack
+
+- Next.js
+- React
+- TypeScript
+- Styled Components
+- Zustand
+- Axios
+- next-intl
+- CSS
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+Make sure you have Node.js and npm installed.
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone <repository-url>
+```
+
+Navigate to the project directory:
+
+```bash
+cd nova-store
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+### Environment Variables
+
+Create a `.env.local` file in the project root and add the following variables:
+
+```env
+NEXT_PUBLIC_API_BASE_URL=https://fakestoreapi.com
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
+
+### Run the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command         | Description                           |
+| --------------- | ------------------------------------- |
+| `npm run dev`   | Starts the development server         |
+| `npm run build` | Builds the application for production |
+| `npm run start` | Starts the production server          |
+| `npm run lint`  | Runs ESLint                           |
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```text
+nova-store/
+├── app/
+│   └── [locale]/
+│       ├── cart/
+│       ├── products/
+│       ├── layout.tsx
+│       ├── page.tsx
+│       └── providers.tsx
+├── api/
+├── assets/
+├── components/
+├── context/
+├── dictionary/
+├── i18n/
+├── lib/
+├── modals/
+├── public/
+│   └── images/
+├── requests/
+├── shared/
+├── storage/
+├── types/
+├── utils/
+├── validations/
+├── .env.example
+└── package.json
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## API
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Product data is provided by [Fake Store API](https://fakestoreapi.com/).
 
-## Deploy on Vercel
+## Localization
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The application supports:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Persian (fa) — Right-to-Left (RTL)
+- English (en) — Left-to-Right (LTR)
+
+The default language is Persian.
+
+## License
+
+This project was developed as a frontend technical assignment.

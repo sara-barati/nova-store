@@ -22,7 +22,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "NOVA Store",
+  title: {
+    default: "NOVA Store | Online Shopping",
+    template: "%s | NOVA Store",
+  },
   description: "NOVA Online Shopping Store",
 };
 
@@ -55,9 +58,9 @@ export default async function RootLayout({
     <html
       lang={locale}
       dir={locale === "fa" ? "rtl" : "ltr"}
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable}`}
     >
-      <body className="min-h-full flex flex-col">
+      <body>
         <StyledComponentsRegistry>
           <NextIntlClientProvider messages={messages}>
             <Providers>{children}</Providers>

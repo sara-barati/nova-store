@@ -23,7 +23,9 @@
     "clear": "پاک کردن سبد خرید",
     "remove": "حذف محصول",
     "subtotal": "مجموع خرید:",
-    "continueShopping": "ادامه خرید"
+    "continueShopping": "ادامه خرید",
+    "decreaseQuantity": "کم کردن تعداد",
+    "increaseQuantity": "زیاد کردن تعداد"
   },
   "Catalog": {
     "searchPlaceholder": "جست‌وجوی محصولات...",
@@ -41,5 +43,25 @@
     "page": "صفحه",
     "of": "از",
     "results": "محصول"
+  },
+  "Footer": {
+    "description": "در NOVA محصولات مورد نیاز خود را با تجربه‌ای ساده و لذت‌بخش پیدا کنید.",
+    "quickLinks": "دسترسی سریع",
+    "home": "صفحه اصلی",
+    "products": "محصولات",
+    "cart": "سبد خرید",
+    "customerService": "راهنمای مشتریان",
+    "contact": "تماس با ما",
+    "shipping": "راهنمای ارسال",
+    "returns": "شرایط بازگشت کالا",
+    "contactUs": "اطلاعات تماس",
+    "email": "support@nova-store.example",
+    "workingHours": "پشتیبانی آنلاین",
+    "copyright": "© 2026 NOVA Store. تمامی حقوق محفوظ است."
+  },
+  "Notifications": {
+    "itemAdded": "محصول با موفقیت به سبد خرید اضافه شد.",
+    "itemRemoved": "محصول از سبد خرید حذف شد.",
+    "cartCleared": "سبد خرید خالی شد."
   }
 }

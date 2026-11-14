@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { toast } from "sonner";
 
 import { Link } from "@/i18n/navigation";
 import { useCartStore } from "@/storage/cartStore";
@@ -13,10 +14,16 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const t = useTranslations("Product");
+  const notification = useTranslations("Notifications");
 
   const addToCart = useCartStore((state) => state.addToCart);
 
   const hasHydrated = useCartStore((state) => state.hasHydrated);
+
+  const handleAddToCart = () => {
+    addToCart(product);
+    toast.success(notification("itemAdded"));
+  };
 
   return (
     <article className="product-card">
@@ -47,7 +54,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           type="button"
           className="card-add-button"
           disabled={!hasHydrated}
-          onClick={() => addToCart(product)}
+          onClick={handleAddToCart}
           aria-label={t("addToCart")}
           title={t("addToCart")}
         >

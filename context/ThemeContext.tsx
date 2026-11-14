@@ -25,10 +25,12 @@ const subscribe = (callback: () => void) => {
   const handleStorageChange = () => callback();
 
   window.addEventListener("storage", handleStorageChange);
+
   window.addEventListener("nova-theme-change", handleStorageChange);
 
   return () => {
     window.removeEventListener("storage", handleStorageChange);
+
     window.removeEventListener("nova-theme-change", handleStorageChange);
   };
 };

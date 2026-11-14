@@ -23,7 +23,9 @@
     "clear": "Clear Cart",
     "remove": "Remove",
     "subtotal": "Subtotal:",
-    "continueShopping": "Continue Shopping"
+    "continueShopping": "Continue Shopping",
+    "decreaseQuantity": "Decrease quantity",
+    "increaseQuantity": "Increase quantity"
   },
   "Catalog": {
     "searchPlaceholder": "Search products...",
@@ -41,5 +43,25 @@
     "page": "Page",
     "of": "of",
     "results": "products"
+  },
+  "Footer": {
+    "description": "Discover your favorite products with a simple and enjoyable shopping experience at NOVA.",
+    "quickLinks": "Quick Links",
+    "home": "Home",
+    "products": "Products",
+    "cart": "Shopping Cart",
+    "customerService": "Customer Service",
+    "contact": "Contact Us",
+    "shipping": "Shipping Information",
+    "returns": "Return Policy",
+    "contactUs": "Contact Information",
+    "email": "support@nova-store.example",
+    "workingHours": "Online Support",
+    "copyright": "© 2026 NOVA Store. All rights reserved."
+  },
+  "Notifications": {
+    "itemAdded": "Product added to cart successfully.",
+    "itemRemoved": "Product removed from cart.",
+    "cartCleared": "Your cart has been cleared."
   }
 }

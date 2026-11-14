@@ -1,8 +1,45 @@
 {
   "HomePage": {
     "title": "به فروشگاه NOVA خوش آمدید",
-    "description": "تجربه خریدی متفاوت با NOVA",
+    "description": "محصولات مورد نیازتان را با بهترین کیفیت و قیمت پیدا کنید.",
     "products": "محصولات",
-    "cart": "سبد خرید"
+    "shopNow": "مشاهده محصولات",
+    "loadError": "دریافت محصولات با مشکل مواجه شد."
+  },
+  "Header": {
+    "cart": "سبد خرید",
+    "language": "English",
+    "darkMode": "حالت تاریک",
+    "lightMode": "حالت روشن"
+  },
+  "Product": {
+    "addToCart": "افزودن به سبد خرید",
+    "reviews": "نظر"
+  },
+  "Cart": {
+    "title": "سبد خرید شما",
+    "empty": "سبد خرید شما خالی است.",
+    "loading": "در حال بارگذاری...",
+    "clear": "پاک کردن سبد خرید",
+    "remove": "حذف محصول",
+    "subtotal": "مجموع خرید:",
+    "continueShopping": "ادامه خرید"
+  },
+  "Catalog": {
+    "searchPlaceholder": "جست‌وجوی محصولات...",
+    "category": "دسته‌بندی",
+    "allCategories": "همه دسته‌بندی‌ها",
+    "sort": "مرتب‌سازی",
+    "defaultSort": "پیش‌فرض",
+    "priceLowToHigh": "قیمت: از کم به زیاد",
+    "priceHighToLow": "قیمت: از زیاد به کم",
+    "mostPopular": "محبوب‌ترین",
+    "highestRated": "بالاترین امتیاز",
+    "noProducts": "محصولی پیدا نشد.",
+    "previous": "قبلی",
+    "next": "بعدی",
+    "page": "صفحه",
+    "of": "از",
+    "results": "محصول"
   }
 }

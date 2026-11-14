@@ -1,8 +1,45 @@
 {
   "HomePage": {
     "title": "Welcome to NOVA Store",
-    "description": "A different shopping experience with NOVA",
+    "description": "Discover amazing products with the best quality and prices.",
     "products": "Products",
-    "cart": "Shopping Cart"
+    "shopNow": "Shop Now",
+    "loadError": "Unable to load products."
+  },
+  "Header": {
+    "cart": "Cart",
+    "language": "فارسی",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode"
+  },
+  "Product": {
+    "addToCart": "Add to Cart",
+    "reviews": "reviews"
+  },
+  "Cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty.",
+    "loading": "Loading cart...",
+    "clear": "Clear Cart",
+    "remove": "Remove",
+    "subtotal": "Subtotal:",
+    "continueShopping": "Continue Shopping"
+  },
+  "Catalog": {
+    "searchPlaceholder": "Search products...",
+    "category": "Category",
+    "allCategories": "All Categories",
+    "sort": "Sort by",
+    "defaultSort": "Default",
+    "priceLowToHigh": "Price: Low to High",
+    "priceHighToLow": "Price: High to Low",
+    "mostPopular": "Most Popular",
+    "highestRated": "Top Rated",
+    "noProducts": "No products found.",
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page",
+    "of": "of",
+    "results": "products"
   }
 }

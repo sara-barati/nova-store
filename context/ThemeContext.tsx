@@ -1,16 +1,6 @@
 "use client";
 
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  type ReactNode,
-} from "react";
-
-import { ThemeProvider as StyledThemeProvider } from "styled-components";
-
-import { lightTheme, darkTheme, type AppTheme } from "@/shared/theme";
+import { createContext, useContext, useSyncExternalStore } from "react";
 
 type ThemeMode = "light" | "dark";
 
@@ -21,33 +11,46 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+const THEME_STORAGE_KEY = "nova-theme";
+
+const getThemeSnapshot = (): ThemeMode => {
+  const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+
+  return savedTheme === "dark" ? "dark" : "light";
+};
+
+const getServerSnapshot = (): ThemeMode => "light";
+
+const subscribe = (callback: () => void) => {
+  const handleStorageChange = () => callback();
+
+  window.addEventListener("storage", handleStorageChange);
+  window.addEventListener("nova-theme-change", handleStorageChange);
+
+  return () => {
+    window.removeEventListener("storage", handleStorageChange);
+    window.removeEventListener("nova-theme-change", handleStorageChange);
+  };
+};
+
 interface ThemeContextProviderProps {
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 export function ThemeContextProvider({ children }: ThemeContextProviderProps) {
-  const [themeMode, setThemeMode] = useState<ThemeMode>("light");
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("nova-theme");
-
-    if (savedTheme === "light" || savedTheme === "dark") {
-      setThemeMode(savedTheme);
-    }
-  }, []);
+  const themeMode = useSyncExternalStore(
+    subscribe,
+    getThemeSnapshot,
+    getServerSnapshot,
+  );
 
   const toggleTheme = () => {
-    setThemeMode((currentTheme) => {
-      const nextTheme = currentTheme === "light" ? "dark" : "light";
+    const nextTheme: ThemeMode = themeMode === "light" ? "dark" : "light";
 
-      localStorage.setItem("nova-theme", nextTheme);
+    localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
 
-      return nextTheme;
-    });
+    window.dispatchEvent(new Event("nova-theme-change"));
   };
-
-  const selectedTheme: AppTheme =
-    themeMode === "light" ? lightTheme : darkTheme;
 
   return (
     <ThemeContext.Provider
@@ -56,9 +59,7 @@ export function ThemeContextProvider({ children }: ThemeContextProviderProps) {
         toggleTheme,
       }}
     >
-      <StyledThemeProvider theme={selectedTheme}>
-        {children}
-      </StyledThemeProvider>
+      {children}
     </ThemeContext.Provider>
   );
 }
@@ -67,7 +68,7 @@ export function useTheme() {
   const context = useContext(ThemeContext);
 
   if (!context) {
-    throw new Error("useTheme must be used inside ThemeContextProvider");
+    throw new Error("useTheme must be used within ThemeContextProvider");
   }
 
   return context;
